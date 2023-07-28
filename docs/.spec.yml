@@ -1,0 +1,65 @@
+### OUTPUT SCHEMA, yaml format
+entities:
+- Bookmark:
+    - name: id
+      type: 'number'
+      required: true
+    - name: repository
+      type: 'string'
+      required: true
+    - name: date
+      type: 'datetime'
+      required: true
+apis:
+  - name: GetBookmarks
+    method: 'GET'
+    path: '/api/bookmarks/list'
+    filepath: 'pages/api/bookmarks/list.ts'
+    response:
+      200:
+        body:
+            - name: bookmarks
+              type: 'array'
+              required: true
+  - name: AddBookmark
+    method: 'POST'
+    path: '/api/bookmarks/create'
+    filepath: 'pages/api/bookmarks/create.ts'
+    request:
+        body:
+            - name: repository 
+              type: 'string'
+              required: true
+    response:
+      200:
+        body:
+            - name: bookmark
+              type: 'object' 
+              required: true
+pages:
+    - name: Bookmarks
+      description: Page to display all bookmarks
+      path: '/bookmarks'
+      filepath: 'pages/bookmarks.tsx'
+      relates:
+        entities:
+          - Bookmark
+        apis:
+          - GetBookmarks
+    - name: AddBookmark
+      description: Page to add a new bookmark
+      path: '/addBookmark'
+      filepath: 'pages/addBookmark.tsx'
+      relates:
+        entities:
+          - Bookmark
+        apis:
+          - AddBookmark
+    - name: Home
+      description: Home page
+      path: '/'
+      filepath: 'pages/index.tsx'
+      relates:
+        pages:
+          - Bookmarks
+          - AddBookmark

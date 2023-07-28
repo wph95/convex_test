@@ -1,18 +1,29 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+// pages/index.tsx
+import React from 'react'
+import { useRouter } from "next/router";
 
-const inter = Inter({ subsets: ['latin'] })
+export default function HomePage() {
+  const router = useRouter()
 
-export default function Home() {
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="flex flex-col items-center justify-center text-3xl font-bold">
-
-        🔎 Convex Seed Template
+    <div className="container mx-auto px-4">
+      <div className="flex flex-col items-start">
+        <h1 className="text-2xl font-semibold mb-4">Home Page</h1>
+        <div className="flex space-x-4">
+          <button 
+            onClick={() => router.push('/bookmarks')} 
+            className="px-4 py-2 border border-gray-300 rounded hover:bg-gray-200 transition"
+          >
+            Go to Bookmarks
+          </button>
+          <button 
+            onClick={() => router.push('/addBookmark')} 
+            className="px-4 py-2 border border-gray-300 rounded hover:bg-gray-200 transition"
+          >
+            Add a Bookmark
+          </button>
+        </div>
       </div>
-
-    </main>
+    </div>
   )
 }
