@@ -2,8 +2,8 @@
 personal bookmarks for Github.
 
 ## User Case
-- As a owner, I can bookmark a Github repository.
-- As a owner, I can see all my bookmarks.
+- I can bookmark a Github repository.
+- I can see all my bookmarks.
 
 ## Tips:
-Owner only me.
+- No Login/Signup required. 
